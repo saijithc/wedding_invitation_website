@@ -36,18 +36,18 @@ body {
 
 /* Glassmorphism Cards */
 .glass-card {
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(184, 151, 88, 0.25);
-  box-shadow: 0 10px 30px rgba(90, 66, 49, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 30px rgba(90, 66, 49, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .glass-pill {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(184, 151, 88, 0.3);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 4px 15px rgba(90, 66, 49, 0.08);
 }
 

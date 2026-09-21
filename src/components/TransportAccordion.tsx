@@ -88,7 +88,7 @@ export default function TransportAccordion() {
         return (
           <div
             key={t.id}
-            className="rounded-xl border border-[#B89758]/25 bg-white/70 backdrop-blur-sm overflow-hidden transition-all duration-300"
+            className="rounded-xl border border-[#B89758]/25 bg-white/40 backdrop-blur-xl overflow-hidden transition-all duration-300"
           >
             <button
               type="button"

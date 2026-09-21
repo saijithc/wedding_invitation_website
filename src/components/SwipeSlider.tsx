@@ -116,7 +116,7 @@ export default function SwipeSlider({ onComplete }: SwipeSliderProps) {
     <div className="w-full max-w-sm mx-auto flex flex-col items-center select-none">
       <div
         ref={trackRef}
-        className="relative w-full h-14 rounded-full bg-white/75 backdrop-blur-md border border-[#B89758]/40 shadow-md p-1 flex items-center overflow-hidden transition-colors duration-300"
+        className="relative w-full h-14 rounded-full bg-white/40 backdrop-blur-xl border border-[#B89758]/40 shadow-md p-1 flex items-center overflow-hidden transition-colors duration-300"
       >
         {/* Dynamic progress fill */}
         <div
