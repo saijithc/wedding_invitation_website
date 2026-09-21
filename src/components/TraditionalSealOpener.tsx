@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
-import { Sparkles, ChevronRight } from 'lucide-react';
+import { ChevronUp } from 'lucide-react';
 
 interface TraditionalSealOpenerProps {
   onComplete: () => void;
@@ -27,16 +27,16 @@ export default function TraditionalSealOpener({ onComplete, isOpened }: Traditio
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('play-wedding-music'));
       if ('vibrate' in navigator) {
-        navigator.vibrate([25, 40, 25]);
+        navigator.vibrate([20, 30, 20]);
       }
     }
 
     setTimeout(() => {
       setIsOpening(true);
       confetti({
-        particleCount: 65,
-        spread: 85,
-        origin: { y: 0.8 },
+        particleCount: 55,
+        spread: 80,
+        origin: { y: 0.78 },
         colors: ['#D4AF37', '#B89758', '#E6CF9B', '#8C6D52', '#FAF7F2'],
       });
       setTimeout(() => onComplete(), 450);
@@ -45,164 +45,150 @@ export default function TraditionalSealOpener({ onComplete, isOpened }: Traditio
 
   return (
     <>
+      {/* Keyframe styles */}
       <style>{`
         @keyframes flameSway {
           0%, 100% { transform: scaleX(1) scaleY(1) rotate(-1deg); }
-          25%       { transform: scaleX(0.92) scaleY(1.08) rotate(1.5deg); }
-          50%       { transform: scaleX(1.06) scaleY(0.95) rotate(-0.5deg); }
-          75%       { transform: scaleX(0.95) scaleY(1.05) rotate(1deg); }
+          25%       { transform: scaleX(0.93) scaleY(1.07) rotate(1.5deg); }
+          50%       { transform: scaleX(1.05) scaleY(0.96) rotate(-0.5deg); }
+          75%       { transform: scaleX(0.96) scaleY(1.04) rotate(1deg); }
+        }
+        @keyframes warmGlow {
+          0%, 100% { opacity: 0.35; transform: scale(1); }
+          50%       { opacity: 0.6;  transform: scale(1.08); }
+        }
+        @keyframes warmGlowLit {
+          0%, 100% { opacity: 0.55; transform: scale(1); }
+          50%       { opacity: 0.85; transform: scale(1.12); }
+        }
+        @keyframes outerGlowLit {
+          0%, 100% { opacity: 0.2; transform: scale(1); }
+          50%       { opacity: 0.4; transform: scale(1.15); }
         }
         @keyframes flameFlicker {
           0%, 100% { opacity: 1; }
           45%       { opacity: 0.88; }
-          70%       { opacity: 0.96; }
-        }
-        @keyframes btnPulse {
-          0%, 100% {
-            box-shadow: 0 4px 18px rgba(184, 151, 88, 0.22), 0 0 0 0 rgba(212, 175, 55, 0.35);
-          }
-          50% {
-            box-shadow: 0 6px 24px rgba(184, 151, 88, 0.35), 0 0 0 6px rgba(212, 175, 55, 0);
-          }
-        }
-        @keyframes subtleBounce {
-          0%, 100% { transform: translateX(0); }
-          50% { transform: translateX(3px); }
-        }
-        @keyframes diyaGlow {
-          0%, 100% { transform: scale(1); opacity: 0.5; }
-          50% { transform: scale(1.15); opacity: 0.9; }
+          70%       { opacity: 0.95; }
         }
       `}</style>
 
-      <div className="w-full max-w-md mx-auto flex flex-col items-center select-none pt-2 pb-2 px-1">
-        {/* Prominent High-Affordance Tap to Open Button */}
+      <div className="w-full max-w-xs mx-auto flex flex-col items-center select-none pt-2 pb-1">
+
         <button
           type="button"
           onClick={handleOpen}
           disabled={isOpening}
-          aria-label="Tap to Open Wedding Invitation"
-          className={`group relative w-full flex items-center justify-between gap-3 sm:gap-4 px-4 py-3 sm:py-3.5 rounded-2xl
-            border-2 transition-all duration-300 cursor-pointer active:scale-[0.98] overflow-hidden
-            ${isLit
-              ? 'bg-gradient-to-r from-[#FFFDF9] via-[#FAF3E5] to-[#F7EBD0] border-[#D4AF37] shadow-[0_0_25px_rgba(212,175,55,0.4)]'
-              : 'bg-gradient-to-r from-white via-[#FCFAF6] to-[#FAF5EC] border-[#B89758]/60 hover:border-[#B89758] hover:shadow-[0_8px_25px_rgba(184,151,88,0.28)]'
-            }
-          `}
-          style={{
-            animation: isLit ? 'none' : 'btnPulse 2.8s ease-in-out infinite',
-          }}
+          aria-label="Open Wedding Invitation"
+          className="group relative flex flex-col items-center gap-2 cursor-pointer disabled:cursor-not-allowed"
         >
-          {/* Subtle shimmering light across button */}
-          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-[#B89758]/15 to-transparent pointer-events-none" />
+          {/* Diya + glow stack */}
+          <div className="relative flex items-center justify-center w-28 h-28">
 
-          {/* Left: Traditional Diya Medallion */}
-          <div className="relative shrink-0 flex items-center justify-center">
-            {/* Ambient aura behind diya */}
+            {/* Outermost warm ambient glow — only when lit */}
+            {isLit && (
+              <div
+                className="absolute w-28 h-28 rounded-full"
+                style={{
+                  background: 'radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 70%)',
+                  animation: 'outerGlowLit 2.4s ease-in-out infinite',
+                }}
+              />
+            )}
+
+            {/* Inner warm halo — breathes gently like candlelight */}
             <div
-              className="absolute w-14 h-14 rounded-full"
+              className="absolute w-20 h-20 rounded-full"
               style={{
                 background: isLit
-                  ? 'radial-gradient(circle, rgba(251,191,36,0.6) 0%, rgba(212,175,55,0.25) 55%, transparent 75%)'
-                  : 'radial-gradient(circle, rgba(212,175,55,0.25) 0%, transparent 70%)',
-                animation: isLit ? 'diyaGlow 1.6s ease-in-out infinite' : 'none',
+                  ? 'radial-gradient(circle, rgba(247,223,148,0.45) 0%, rgba(212,175,55,0.2) 50%, transparent 75%)'
+                  : 'radial-gradient(circle, rgba(184,151,88,0.18) 0%, transparent 70%)',
+                animation: isLit ? 'warmGlowLit 1.8s ease-in-out infinite' : 'warmGlow 3s ease-in-out infinite',
               }}
             />
 
-            {/* Circular golden frame */}
+            {/* Gold diya base circle */}
             <div
-              className={`relative z-10 w-12 h-12 sm:w-13 sm:h-13 rounded-full flex items-center justify-center p-0.5 shadow-sm transition-transform duration-500
+              className={`relative z-10 w-16 h-16 rounded-full flex items-center justify-center shadow-md transition-all duration-700
                 ${isLit
-                  ? 'bg-gradient-to-br from-[#FDE68A] via-[#D4AF37] to-[#8C6D52] scale-105'
-                  : 'bg-gradient-to-br from-[#F5E1B5] via-[#CBB073] to-[#8C6D52] group-hover:scale-105'
+                  ? 'shadow-[0_0_20px_6px_rgba(212,175,55,0.35)]'
+                  : 'group-hover:shadow-[0_0_14px_4px_rgba(184,151,88,0.25)]'
                 }
               `}
+              style={{
+                background: isLit
+                  ? 'radial-gradient(circle at 40% 35%, #F7DF94, #D4AF37 50%, #8C6D52)'
+                  : 'radial-gradient(circle at 40% 35%, #E6CF9B, #B89758 55%, #7A5C38)',
+              }}
             >
-              {/* Inner bowl container */}
-              <div className="w-full h-full rounded-full bg-[#FAF7F2] flex items-end justify-center overflow-hidden pb-1 border border-white/80">
+              {/* Inner diya body */}
+              <div className="w-11 h-11 rounded-full bg-[#FAF7F2] flex items-end justify-center overflow-hidden pb-1">
+
+                {/* Diya SVG — flame + bowl */}
                 <svg viewBox="0 0 32 32" className="w-9 h-9" fill="none">
+
                   {/* Diya bowl */}
                   <path
-                    d="M6 19.5 C6 24 10 26.5 16 26.5 C22 26.5 26 24 26 19.5 C22 19.5 19 21 16 21 C13 21 10 19.5 6 19.5 Z"
+                    d="M6 19 C6 24 10 26.5 16 26.5 C22 26.5 26 24 26 19 C22 19 19 20.5 16 20.5 C13 20.5 10 19 6 19 Z"
                     fill="#C5A869"
                     stroke="#B89758"
-                    strokeWidth="0.7"
+                    strokeWidth="0.6"
                   />
                   {/* Bowl rim */}
                   <path
-                    d="M8 19.5 C10 17.5 13 17 16 17 C19 17 22 17.5 24 19.5"
+                    d="M8 19 C10 17 13 16.5 16 16.5 C19 16.5 22 17 24 19"
                     stroke="#D4AF37"
-                    strokeWidth="0.85"
+                    strokeWidth="0.8"
                     strokeLinecap="round"
                   />
                   {/* Wick */}
-                  <line x1="16" y1="17" x2="16" y2="13.5" stroke="#785338" strokeWidth="1" strokeLinecap="round" />
+                  <line x1="16" y1="16.5" x2="16" y2="13.5" stroke="#8C6D52" strokeWidth="0.9" strokeLinecap="round" />
 
-                  {/* Flame */}
+                  {/* Flame — only shown when lit or hovered */}
                   {isLit ? (
                     <g style={{ animation: 'flameSway 1.6s ease-in-out infinite, flameFlicker 1.2s ease-in-out infinite', transformOrigin: '16px 13.5px' }}>
                       {/* Outer flame */}
                       <path
-                        d="M16 3.5 C16 3.5 19.5 8.5 19.5 12 C19.5 14 18 15.5 16 15.5 C14 15.5 12.5 14 12.5 12 C12.5 8.5 16 3.5 16 3.5 Z"
-                        fill="#EA580C"
-                        opacity="0.85"
+                        d="M16 4 C16 4 19 9 19 12 C19 13.7 17.7 15 16 15 C14.3 15 13 13.7 13 12 C13 9 16 4 16 4 Z"
+                        fill="#F97316"
+                        opacity="0.7"
                       />
-                      {/* Inner glowing flame */}
+                      {/* Inner bright flame */}
                       <path
-                        d="M16 6 C16 6 18.2 9.5 18.2 12 C18.2 13.2 17.2 14.2 16 14.2 C14.8 14.2 13.8 13.2 13.8 12 C13.8 9.5 16 6 16 6 Z"
-                        fill="#FBBF24"
+                        d="M16 6.5 C16 6.5 17.8 10 17.8 12 C17.8 13.0 17.0 13.8 16 13.8 C15.0 13.8 14.2 13.0 14.2 12 C14.2 10 16 6.5 16 6.5 Z"
+                        fill="#FCD34D"
                       />
-                      {/* White-hot flame core */}
-                      <ellipse cx="16" cy="8" rx="1.2" ry="2.2" fill="#FEF3C7" />
+                      {/* Flame tip glow */}
+                      <ellipse cx="16" cy="8" rx="1.2" ry="2" fill="#FEF3C7" opacity="0.85" />
                     </g>
                   ) : (
-                    /* Unlit ready wick */
-                    <circle cx="16" cy="13.5" r="1" fill="#5A4231" opacity="0.6" />
+                    /* Unlit wick tip */
+                    <circle cx="16" cy="13.2" r="0.9" fill="#5A4231" opacity="0.5" />
                   )}
                 </svg>
+
               </div>
             </div>
           </div>
 
-          {/* Center: Clear, Prominent, Actionable Text */}
-          <div className="flex-1 text-left min-w-0">
-            {/* Eyebrow badge: Highly visible */}
-            <div className="flex items-center gap-1.5 mb-0.5">
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#B89758]/15 text-[#8C6D52] font-semibold text-[10px] sm:text-[11px] tracking-wider uppercase">
-                <Sparkles className="w-3 h-3 text-[#B89758]" />
-                <span>{isLit ? 'Lighting Diya…' : 'Tap to Open'}</span>
-              </span>
-            </div>
-
-            {/* Primary Action Title */}
-            <h3 className="font-serif text-base sm:text-lg font-bold text-[#2D1E12] tracking-wide leading-snug">
-              {isOpening ? 'Opening Invitation…' : isLit ? 'Welcome to Celebration' : 'Open Wedding Invitation'}
-            </h3>
-
-            {/* Subtext */}
-            <p className="text-[11px] sm:text-xs text-[#6B5445] font-medium truncate mt-0.5">
-              {isLit ? 'Revealing schedule & venue…' : 'Touch to light the diya & enter'}
-            </p>
-          </div>
-
-          {/* Right: Golden Action Arrow Button */}
-          <div className="shrink-0 flex items-center justify-center">
-            <div
-              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300
-                ${isLit
-                  ? 'bg-[#B89758] text-white shadow-sm'
-                  : 'bg-[#FAF7F2] text-[#8C6D52] border border-[#B89758]/40 group-hover:bg-[#B89758] group-hover:text-white group-hover:border-[#B89758]'
-                }
-              `}
-              style={{
-                animation: isLit ? 'none' : 'subtleBounce 1.8s ease-in-out infinite',
-              }}
-            >
-              <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
-            </div>
+          {/* Highly Visible CTA */}
+          <div className="text-center w-full mt-2">
+            {!isLit ? (
+              <div className="flex flex-col items-center animate-bounce">
+                <ChevronUp className="w-5 h-5 text-[#B89758] mb-1" />
+                <span className="inline-block px-5 py-2.5 rounded-full bg-[#B89758] text-white text-xs font-bold tracking-[0.2em] uppercase shadow-md border border-[#D4AF37]/50 group-hover:bg-[#a38346] transition-colors">
+                  Tap to Open
+                </span>
+              </div>
+            ) : (
+              <p className="font-serif font-semibold text-lg tracking-wide text-[#8C6D52] animate-pulse">
+                {isOpening ? 'Opening…' : 'Lighting the way…'}
+              </p>
+            )}
           </div>
         </button>
+
       </div>
     </>
   );
 }
+
