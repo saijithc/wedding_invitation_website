@@ -92,7 +92,7 @@ export default function DetailsView() {
       </div>
 
       {/* ── Parents & Lineage Card ── */}
-      <div className="rounded-2xl border border-[#B89758]/35 bg-white/40 backdrop-blur-xl p-5 sm:p-6 shadow-sm mb-6 text-center card-inner-frame">
+      <div className="rounded-2xl liquid-glass-gold p-5 sm:p-6 shadow-sm mb-6 text-center card-inner-frame">
         {/* Groom Family */}
         <div className="space-y-1">
           <p className="text-[11px] uppercase tracking-widest text-[#B89758] font-semibold">
@@ -128,7 +128,7 @@ export default function DetailsView() {
       </div>
 
       {/* ── Save the Date & Calendar Pill ── */}
-      <div className="rounded-2xl border border-[#B89758]/35 bg-white/40 backdrop-blur-xl p-5 text-center shadow-sm mb-6">
+      <div className="rounded-2xl liquid-glass-gold p-5 text-center shadow-sm mb-6">
         <p className="text-[11px] uppercase tracking-widest text-[#7D5D42] font-medium mb-1">
           Mark Your Calendar
         </p>
@@ -161,7 +161,7 @@ export default function DetailsView() {
         </div>
 
         {/* Card 1: Reception (Primary Celebration) */}
-        <div className="rounded-2xl border border-[#B89758]/35 bg-white/40 backdrop-blur-xl p-5 shadow-sm space-y-3">
+        <div className="rounded-2xl liquid-glass-gold p-5 shadow-sm space-y-3">
           <div className="flex items-start justify-between gap-2">
             <div>
               <span className="inline-block px-3 py-1 rounded-full bg-[#B89758] text-[#FCFAF6] text-[10px] uppercase tracking-wider font-semibold">

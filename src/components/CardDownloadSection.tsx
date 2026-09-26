@@ -32,7 +32,7 @@ export default function CardDownloadSection() {
 
   return (
     <div className="w-full space-y-4">
-      <div className="rounded-2xl border border-[#B89758]/30 bg-white/40 backdrop-blur-xl p-4 sm:p-5 shadow-sm text-center">
+      <div className="rounded-2xl liquid-glass-gold p-4 sm:p-5 shadow-sm text-center">
         <h4 className="font-serif font-semibold text-lg text-[#3D2A1D] mb-1">
           Wedding Invitation Card
         </h4>
