@@ -1,74 +1,77 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Plane, Train, Bus, ChevronDown } from 'lucide-react';
+import { Plane, Train, Bus, Car, ChevronDown } from 'lucide-react';
 
-interface TransportOption {
+interface TransportSection {
   id: string;
   icon: React.ReactNode;
   title: string;
-  items: { label: string; value: string; highlight?: boolean }[];
+  content: { heading?: string; text: string }[];
 }
 
-const transportData: TransportOption[] = [
+const transportData: TransportSection[] = [
   {
     id: 'air',
     icon: <Plane className="w-4 h-4 text-[#B89758]" />,
-    title: 'By Air',
-    items: [
+    title: 'By Air (Flight)',
+    content: [
       {
-        label: 'Nearest for Reception (Manjeri):',
-        value: 'Calicut International Airport (CCJ) — 24 km (~35 min drive)',
-        highlight: true,
+        heading: 'Calicut International Airport (CCJ / Karipur) — ~25–30 km away',
+        text: 'Upon landing at Calicut Airport, hire a prepaid taxi directly to Karakkunnu/Manjeri via the Kondotty – Manjeri route. The journey takes around 45–60 minutes depending on traffic.',
       },
       {
-        label: 'Nearest for Ceremony (Palakkad):',
-        value: 'Coimbatore Airport (CJB) — 75 km | Cochin Airport (COK) — 105 km',
-      },
-      {
-        label: 'Transport:',
-        value: 'Pre-paid airport taxis and app cabs readily available from terminals.',
+        heading: 'Bus Alternative',
+        text: 'Take an auto or taxi from the airport to the nearby Kondotty bus stand, then catch a direct KSRTC or private bus bound for Manjeri/Nilambur.',
       },
     ],
   },
   {
     id: 'train',
     icon: <Train className="w-4 h-4 text-[#B89758]" />,
-    title: 'By Train',
-    items: [
+    title: 'By Train (Railway)',
+    content: [
       {
-        label: 'For Reception (Manjeri):',
-        value: 'Angadippuram (AAM) — 21 km | Tirur (TIR) — 44 km | Parappanangadi (PGI) — 38 km',
-        highlight: true,
+        heading: 'Angadippuram Railway Station (AAM) — ~20 km away',
+        text: 'Serves the Nilambur–Shoranur railway line. Convenient for guests traveling via Shoranur Junction. Local buses and taxis to Manjeri/Karakkunnu are readily available outside the station.',
       },
       {
-        label: 'For Marriage (Palakkad):',
-        value: 'Palakkad Junction (PGT) — 18 km (~30 min drive to Kuthanur)',
-        highlight: true,
+        heading: 'Kozhikode Railway Station (CLT) — ~50 km away',
+        text: 'A major railhead connected to all major cities in India. From Kozhikode Railway Station or the nearby KSRTC Bus Stand, take a direct bus toward Manjeri or Nilambur.',
       },
       {
-        label: 'Transport:',
-        value: 'Frequent connecting buses, autos, and taxis available at station gates.',
+        heading: 'Tirur Railway Station (TIR) — ~40 km away',
+        text: 'Another convenient main-line station. Guests can hire a taxi or catch a bus to Malappuram/Manjeri.',
       },
     ],
   },
   {
     id: 'bus',
     icon: <Bus className="w-4 h-4 text-[#B89758]" />,
-    title: 'By Bus & Road',
-    items: [
+    title: 'By Bus',
+    content: [
       {
-        label: 'Manjeri Reception Route:',
-        value: 'Royal Convention Centre is situated in Karakkunnu on the Manjeri – Pandikkad / Wandoor road (approx. 4 km from Manjeri town).',
-        highlight: true,
+        heading: 'From Manjeri Bus Stand (Local Hub)',
+        text: 'Manjeri Town is the primary transit hub located about 6–7 km from Karakkunnu. Board any local or private bus heading toward Nilambur, Wandoor, or Karakkunnu, and alight near Karakkunnu. Autorickshaws and taxis are easily available from Manjeri town directly to the venue.',
       },
       {
-        label: 'Kuthanur Ceremony Route:',
-        value: 'Sree Chithira Auditorium is located in Kuthanur, easily reachable via Kuzhalmannam junction on NH 544.',
+        heading: 'Intercity / Long-Distance Buses',
+        text: 'Out-of-town guests taking overnight sleeper or interstate buses (from Bengaluru, Chennai, Kochi, Coimbatore, etc.) can book tickets directly to Manjeri or Kozhikode/Malappuram.',
+      },
+    ],
+  },
+  {
+    id: 'road',
+    icon: <Car className="w-4 h-4 text-[#B89758]" />,
+    title: 'By Road (Car & Private Vehicles)',
+    content: [
+      {
+        heading: 'Route via Manjeri Town',
+        text: 'Head toward the Manjeri – Nilambur Road. Proceed for approximately 6 km toward Karakkunnu/Trikkalangode to reach the venue.',
       },
       {
-        label: 'Parking:',
-        value: 'Spacious dedicated valet & guest parking available at both venues.',
+        heading: 'From Calicut / Kozhikode',
+        text: 'Travel via the Kozhikode – Kondotty – Manjeri route (SH 28) and continue toward Karakkunnu on the Nilambur route.',
       },
     ],
   },
@@ -113,19 +116,15 @@ export default function TransportAccordion() {
 
             {isOpen && (
               <div className="px-4 pb-4 pt-1 text-xs sm:text-[13px] text-[#5A4231] border-t border-[#B89758]/15 bg-[#FAF7F2]/50">
-                <ul className="space-y-2.5 pt-2">
-                  {t.items.map((item, idx) => (
-                    <li key={idx} className="flex flex-col sm:flex-row sm:items-baseline gap-1">
-                      <span className="font-medium text-[#7D5D42] text-[11px] sm:text-xs">
-                        {item.label}
-                      </span>
-                      <span
-                        className={`${
-                          item.highlight ? 'text-[#3D2A1D] font-medium' : 'text-[#6B5445]'
-                        }`}
-                      >
-                        {item.value}
-                      </span>
+                <ul className="space-y-3 pt-2">
+                  {t.content.map((item, idx) => (
+                    <li key={idx} className="flex flex-col gap-0.5">
+                      {item.heading && (
+                        <span className="font-semibold text-[#5A4231] text-[11px] sm:text-xs">
+                          {item.heading}
+                        </span>
+                      )}
+                      <span className="text-[#6B5445] leading-relaxed">{item.text}</span>
                     </li>
                   ))}
                 </ul>

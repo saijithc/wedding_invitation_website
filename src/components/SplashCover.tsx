@@ -110,7 +110,7 @@ export default function SplashCover({ onOpen, isOpened }: SplashCoverProps) {
         </div>
 
         {/* Date, Time & Venue Info */}
-        <div className="w-full max-w-lg mx-auto mt-3.5 text-[#5A4231] text-xs space-y-2.5">
+        <div className="w-full max-w-lg mx-auto mt-2 text-[#5A4231] text-xs space-y-2.5">
           <div className="grid grid-cols-2 gap-2.5">
             <div className="h-11 flex items-center justify-center gap-2 px-3 rounded-xl bg-white/40 backdrop-blur-xl border border-[#B89758]/30 shadow-xs">
               <Calendar className="w-4 h-4 text-[#B89758] shrink-0" />
@@ -125,13 +125,6 @@ export default function SplashCover({ onOpen, isOpened }: SplashCoverProps) {
             <MapPin className="w-4 h-4 text-[#B89758] shrink-0" />
             <span className="font-medium">Royal Convention Centre, Karakkunnu, Manjeri</span>
           </div>
-        </div>
-
-        {/* Symmetrical Solemnization Note Box */}
-        <div className="w-full max-w-lg mx-auto mt-2.5 px-3.5 py-2 rounded-xl bg-[#FAF7F2]/85 border border-[#B89758]/25 text-center shadow-xs">
-          <p className="text-[11px] sm:text-xs text-[#7D5D42] font-serif leading-relaxed">
-            <span className="font-semibold text-[#5A4231]">Reception:</span> Sunday 25 Oct 2026 (1202 Thulam 8) at Sree Chithira Auditorium, Kuthanur, Palakkad
-          </p>
         </div>
       </div>
 
