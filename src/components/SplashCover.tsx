@@ -81,12 +81,6 @@ export default function SplashCover({ onOpen, isOpened }: SplashCoverProps) {
         </svg>
       </div>
 
-      {/* Header Block - RSVP removed */}
-      <div className="w-full max-w-lg mx-auto text-center pt-1 sm:pt-3 z-10">
-        <h2 className="font-script text-3xl sm:text-4xl text-[#8C6D52] tracking-wider mb-1 font-normal">
-          Wedding Invitation
-        </h2>
-      </div>
 
       {/* Main Couple Names Section */}
       <div className="w-full max-w-lg mx-auto text-center my-2 sm:my-3 z-10">
@@ -115,20 +109,6 @@ export default function SplashCover({ onOpen, isOpened }: SplashCoverProps) {
           </h1>
         </div>
 
-        {/* Bride Parentage */}
-        <div className="text-xs sm:text-[13px] text-[#6B5445] font-serif max-w-xs sm:max-w-sm mx-auto mt-2 leading-tight">
-          <p className="font-medium text-[#5A4231]">
-            D/o Mr. Appukuttan (Late) &amp; Mrs. Sreekala
-          </p>
-        </div>
-
-        {/* Golden Event Badge */}
-        <div className="inline-block mt-3">
-          <span className="px-5 py-1.5 rounded-full bg-[#B89758] text-[#FCFAF6] font-display text-xs sm:text-sm font-semibold tracking-wider uppercase shadow-sm border border-[#E6CF9B]/40">
-            Wedding Reception
-          </span>
-        </div>
-
         {/* Date, Time & Venue Info */}
         <div className="w-full max-w-lg mx-auto mt-3.5 text-[#5A4231] text-xs space-y-2.5">
           <div className="grid grid-cols-2 gap-2.5">
@@ -150,7 +130,7 @@ export default function SplashCover({ onOpen, isOpened }: SplashCoverProps) {
         {/* Symmetrical Solemnization Note Box */}
         <div className="w-full max-w-lg mx-auto mt-2.5 px-3.5 py-2 rounded-xl bg-[#FAF7F2]/85 border border-[#B89758]/25 text-center shadow-xs">
           <p className="text-[11px] sm:text-xs text-[#7D5D42] font-serif leading-relaxed">
-            <span className="font-semibold text-[#5A4231]">Marriage Solemnization:</span> Sunday 25 Oct 2026 (1202 Thulam 8) at Sree Chithira Auditorium, Kuthanur, Palakkad
+            <span className="font-semibold text-[#5A4231]">Reception:</span> Sunday 25 Oct 2026 (1202 Thulam 8) at Sree Chithira Auditorium, Kuthanur, Palakkad
           </p>
         </div>
       </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, Clock, MapPin, Navigation, Heart, Phone } from 'lucide-react';
+import { Calendar, Clock, MapPin, Navigation, Heart } from 'lucide-react';
 
 import TransportAccordion from './TransportAccordion';
 import CardDownloadSection from './CardDownloadSection';
@@ -104,21 +104,6 @@ export default function DetailsView() {
           <p className="text-xs sm:text-sm text-[#5A4231] font-medium">
             S/o Mr. Surendran C. &amp; Mrs. Preethi K.V.
           </p>
-          <div className="flex items-center justify-center gap-3 pt-1 text-xs">
-            <a
-              href="tel:9489139121"
-              className="inline-flex items-center gap-1 text-[#5A4231] hover:text-[#B89758] font-medium"
-            >
-              <Phone className="w-3 h-3 text-[#B89758]" /> 9489139121
-            </a>
-            <span className="text-[#B89758]/40">·</span>
-            <a
-              href="tel:8606589055"
-              className="inline-flex items-center gap-1 text-[#5A4231] hover:text-[#B89758] font-medium"
-            >
-              <Phone className="w-3 h-3 text-[#B89758]" /> 8606589055
-            </a>
-          </div>
         </div>
 
         {/* Delicate divider */}
