@@ -74,20 +74,20 @@ export default function SplashCover({ onOpen, isOpened }: SplashCoverProps) {
         </div>
 
         {/* Date, Time & Venue Info */}
-        <div className="w-full mt-4 text-[#5A4231] text-xs space-y-2.5">
-          <div className="grid grid-cols-2 gap-2.5">
-            <div className="h-11 flex items-center justify-center gap-2 px-3 rounded-2xl liquid-glass-gold">
-              <Calendar className="w-4 h-4 text-[#B89758] shrink-0" />
-              <span className="font-medium">Mon, 26 Oct 2026</span>
+        <div className="w-full mt-4 text-[#5A4231] space-y-2.5">
+          <div className="grid grid-cols-2 gap-2">
+            <div className="h-10 flex items-center justify-center gap-1.5 px-2 rounded-2xl liquid-glass-gold">
+              <Calendar className="w-3.5 h-3.5 text-[#B89758] shrink-0" />
+              <span className="font-medium text-[11px] sm:text-xs whitespace-nowrap">26 Oct 2026</span>
             </div>
-            <div className="h-11 flex items-center justify-center gap-2 px-3 rounded-2xl liquid-glass-gold">
-              <Clock className="w-4 h-4 text-[#B89758] shrink-0" />
-              <span className="font-medium">4:00 PM – 8:00 PM</span>
+            <div className="h-10 flex items-center justify-center gap-1.5 px-2 rounded-2xl liquid-glass-gold">
+              <Clock className="w-3.5 h-3.5 text-[#B89758] shrink-0" />
+              <span className="font-medium text-[11px] sm:text-xs whitespace-nowrap">4:00 – 8:00 PM</span>
             </div>
           </div>
-          <div className="h-11 flex items-center justify-center gap-2 px-3 rounded-2xl liquid-glass-gold">
-            <MapPin className="w-4 h-4 text-[#B89758] shrink-0" />
-            <span className="font-medium">Royal Convention Centre, Karakkunnu, Manjeri</span>
+          <div className="h-10 flex items-center justify-center gap-1.5 px-3 rounded-2xl liquid-glass-gold">
+            <MapPin className="w-3.5 h-3.5 text-[#B89758] shrink-0" />
+            <span className="font-medium text-[11px] sm:text-xs text-center">Royal Convention Centre, Karakkunnu, Manjeri</span>
           </div>
         </div>
       </div>
