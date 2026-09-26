@@ -78,7 +78,7 @@ const transportData: TransportSection[] = [
 ];
 
 export default function TransportAccordion() {
-  const [openId, setOpenId] = useState<string | null>('air');
+  const [openId, setOpenId] = useState<string | null>(null);
 
   const toggle = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
